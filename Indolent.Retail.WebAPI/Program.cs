@@ -1,3 +1,9 @@
+using Indolent.Retail.Core.ApplicationServices;
+using Indolent.Retail.Core.ApplicationServices.Abstractions;
+using Indolent.Retail.Core.DomainServices;
+using Indolent.Retail.Infrastructure;
+using Indolent.Retail.Infrastructure.DomainServices;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Logging.AddConsole();
 
@@ -7,7 +13,10 @@ var services = builder.Services;
 
 services.AddLogging();
 services.AddControllers();
+services.AddDbContext<DatabaseContext>();
 
+services.AddScoped<ICustomerService, CustomerService>();
+services.AddScoped<ICustomerDomain, CustomerDomain>();
 
 // Configure App
 var app = builder.Build();

@@ -1,0 +1,53 @@
+openapi: "3.0.3"
+info:
+  title: "Indolent Retailer API"
+  version: alpha
+paths:
+  /Customer:
+    get:
+      summary: "GET Customer"
+      parameters:
+        - name: "uuid"
+          in: "query"
+          description: "A 32 character string of character, divided into 8-4-4-4-12 segments"
+          required: false
+          schema:
+            $ref: "#/components/schemas/CustomerUuid"
+      responses:
+        "200":
+          description: "OK"
+          headers: 
+            "x-customer-count":
+              schema: 
+                type: integer
+                format: int32
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    uuid:
+                      $ref: "#/components/schemas/CustomerUuid"
+                    firstName:
+                      type: string
+                    lastName:
+                      type: string
+                    phone:
+                      type: string
+                    email:
+                      type: string
+                    address:
+                      type: string
+        "404":
+          description: "Not found"
+          headers:
+            "x-customer-count":
+              schema:
+                type: integer
+                format: int32
+components:
+  schemas:
+    CustomerUuid:
+      type: string
+      format: "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee"
