@@ -19,6 +19,9 @@ services.AddScoped<ICustomerService, CustomerService>();
 services.AddScoped<ICustomerDomain, CustomerDomain>();
 services.AddScoped<IOrderService, OrderService>();
 services.AddScoped<IOrderDomain, OrderDomain>();
+services.AddScoped<IProductService, ProductService>();
+services.AddScoped<IProductDomain, ProductDomain>();
+
 
 // Configure App
 var app = builder.Build();

@@ -7,4 +7,6 @@ public class Order
     public string CustomerId { get; set; }
 
     public Customer Customer { get; set; }
+
+    public List<Product> Products { get; set; }
 }
