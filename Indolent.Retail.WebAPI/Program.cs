@@ -17,6 +17,8 @@ services.AddDbContext<DatabaseContext>();
 
 services.AddScoped<ICustomerService, CustomerService>();
 services.AddScoped<ICustomerDomain, CustomerDomain>();
+services.AddScoped<IOrderService, OrderService>();
+services.AddScoped<IOrderDomain, OrderDomain>();
 
 // Configure App
 var app = builder.Build();
