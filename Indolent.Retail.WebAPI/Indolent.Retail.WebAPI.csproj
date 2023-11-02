@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Indolent.Retail.Core.Entities\Indolent.Retail.Core.Entities.csproj"/>
+        <ProjectReference Include="..\Indolent.Retail.Core\Indolent.Retail.Core.csproj"/>
+        <ProjectReference Include="..\Indolent.Retail.Infrastructure\Indolent.Retail.Infrastructure.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Humanizer" Version="2.14.1"/>
+    </ItemGroup>
+
+</Project>
