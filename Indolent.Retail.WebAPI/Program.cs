@@ -3,6 +3,7 @@ using Indolent.Retail.Core.ApplicationServices.Abstractions;
 using Indolent.Retail.Core.DomainServices;
 using Indolent.Retail.Infrastructure;
 using Indolent.Retail.Infrastructure.DomainServices;
+using Newtonsoft.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Logging.AddConsole();
@@ -12,7 +13,8 @@ builder.Logging.AddConsole();
 var services = builder.Services;
 
 services.AddLogging();
-services.AddControllers();
+services.AddControllers()
+    .AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 services.AddDbContext<DatabaseContext>();
 
 services.AddScoped<ICustomerService, CustomerService>();

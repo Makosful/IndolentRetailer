@@ -1,5 +1,6 @@
 using Indolent.Retail.Core.DomainServices;
 using Indolent.Retail.Core.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace Indolent.Retail.Infrastructure.DomainServices;
@@ -21,7 +22,7 @@ public class CustomerDomain : ICustomerDomain
         throw new NotImplementedException();
     }
 
-    public IEnumerable<Customer> Read(string uuid = "")
+    public IEnumerable<Customer> Read(string uuid = "", bool includeOrders = false)
     {
         LogMethodCall(nameof(Read));
 
@@ -29,6 +30,8 @@ public class CustomerDomain : ICustomerDomain
 
         if (!string.IsNullOrWhiteSpace(uuid))
             queryable = queryable.Where(c => c.UUID == uuid);
+        if (includeOrders)
+            queryable = queryable.Include(x => x.Orders);
 
         return queryable.ToList();
     }

@@ -14,5 +14,5 @@ public class Customer
 
     public string Address { get; set; }
 
-    public List<Order> Orders { get; set; }
+    public List<Order> Orders { get; set; } = new();
 }

@@ -16,11 +16,11 @@ public class CustomerController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult Read([FromQuery] string uuid = "")
+    public ActionResult Read([FromQuery] string uuid = "", [FromQuery] bool includeOrders = false)
     {
         try
         {
-            var customers = _customerService.Read(uuid).ToList();
+            var customers = _customerService.Read(uuid, includeOrders).ToList();
             var count = customers.Count;
 
             // Add metadata to header

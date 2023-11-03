@@ -6,7 +6,7 @@ public interface ICustomerDomain
 {
     public Customer Create(Customer customer);
 
-    public IEnumerable<Customer> Read(string uuid = "");
+    public IEnumerable<Customer> Read(string uuid = "", bool includeOrders = false);
 
     public Customer Update(Customer customer);
 

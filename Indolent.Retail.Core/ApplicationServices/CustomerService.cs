@@ -23,10 +23,10 @@ public class CustomerService : ICustomerService
         return customer;
     }
 
-    public IEnumerable<Customer> Read(string uuid = "")
+    public IEnumerable<Customer> Read(string uuid = "", bool includeOrders = false)
     {
         LogMethodCall(nameof(Read));
-        var customers = _customerDomain.Read(uuid);
+        var customers = _customerDomain.Read(uuid, includeOrders);
         return customers;
     }
 
